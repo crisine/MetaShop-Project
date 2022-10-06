@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.metanet.metashop.mapper.MemberMapper">
+	
+	<resultMap type="com.metanet.metashop.domain.MemberVO" id="member">
+		<result property="memNo" column="mem_no" />
+		<result property="postCode" column="post_code" />
+		<result property="addressDetail" column="address_detail" />
+	</resultMap>
+	
+	<select id="getList" resultMap="member">
+	  <![CDATA[
+	  select * from member
+	  ]]>
+	</select>
+	
+	<insert id="insert">
+		insert into member(id, password, name, phone, email, post_code, address, address_detail)
+		values (#{id}, #{password}, #{name}, #{phone}, #{email}, #{postCode}, #{address}, #{addressDetail})
+	</insert>
+</mapper>
